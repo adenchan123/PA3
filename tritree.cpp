@@ -77,8 +77,39 @@ void TriTree::Transpose() {
 	// YOUR CODE HERE
 }
 
+void TriTree::Prune(double tol, Node* node) {
+	if(node == nullptr) {
+		return;
+	}
+	vector<Node*> nodes;
+	GetLeafNodes(node, nodes);
+
+	RGBAPixel curr_pix(node->avg);
+	bool to_prune = true;
+	for(Node* node_l: nodes) {
+		if(curr_pix.dist(node_l->avg) > tol) {
+			to_prune = false;
+			break;
+		}
+	}
+
+	if(to_prune) {
+		Clear(node->A);
+		Clear(node->B);
+		Clear(node->C);
+
+		node->A = nullptr;
+		node->B = nullptr;
+		node->C = nullptr;
+	} else {
+		Prune(tol, node->A);
+		Prune(tol, node->B);
+		Prune(tol, node->C);
+	}
+}
+
 void TriTree::Prune(double tol) {
-	// YOUR CODE HERE
+	Prune(tol, root);
 }
 
 int TriTree::NumLeaves(Node* node) const {
