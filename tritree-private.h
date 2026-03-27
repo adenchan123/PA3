@@ -11,4 +11,6 @@
 **/
 int NumLeaves(Node* node) const;
 
+void GetLeafNodes(Node* node, vector<Node*> &nodes) const;
+
 void Clear(Node* node);

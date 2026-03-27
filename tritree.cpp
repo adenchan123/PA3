@@ -36,9 +36,43 @@ void TriTree::Copy(const TriTree& other) {
 	// YOUR CODE HERE
 }
 
+void TriTree::GetLeafNodes(Node* node, vector<Node*> &nodes) const {
+	if(node == nullptr) {
+		return;
+	}
+	if(node->A == nullptr && node->B == nullptr && node->C == nullptr) {
+		nodes.push_back(node);
+	} else {
+		GetLeafNodes(node->A, nodes);
+		GetLeafNodes(node->B, nodes);
+		GetLeafNodes(node->C, nodes);
+	}
+}
+
 PNG TriTree::Render() const {
-	// REPLACE THE LINE BELOW WITH YOUR CODE
-	return PNG();
+	vector<Node*> nodes;
+	GetLeafNodes(root, nodes);
+
+	PNG img(width, height);
+	for(Node* node: nodes) {
+		pair<int, int> upperleft = node->upperleft;
+		int upper_x = upperleft.first;
+		int upper_y = upperleft.second;
+
+		int w = node->width;
+		int h = node->height;
+		RGBAPixel avg_color = node->avg;
+
+		// Draw pixels in img block with the avg color in node
+		for(int pix_x = upper_x; pix_x < upper_x + w; pix_x++) {
+			for(int pix_y = upper_y; pix_y < upper_y + h; pix_y++) {
+				RGBAPixel *curr_pix = img.getPixel(pix_x, pix_y);
+				*curr_pix = avg_color;
+			}
+		}
+	}
+	
+	return img;
 }
 
 void TriTree::Transpose() {
