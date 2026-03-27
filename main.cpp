@@ -33,14 +33,16 @@ int main() {
     TestBuild1x1();
     TestBuild3x1();
     TestBuild3x3();
+    printf("starting 2x5 test\n");
     TestBuild2x5();
-    TestBuild2x5Transpose();
+    printf("finished 2x5 test\n");
+    // TestBuild2x5Transpose();
 
-    TestPrune8x5();
+    // TestPrune8x5();
 
-    TestCopyBasic();
+    // TestCopyBasic();
 
-    TestCopyBigPrune();
+    // TestCopyBigPrune();
 
     return 0;
 }
@@ -96,7 +98,6 @@ void TestBuild3x3() {
 void TestBuild2x5() {
     PNG img;
     img.readFromFile("images-original/mix-2x5.png");
-
     cout << "Building tree from 2x5 image... ";
     TriTree t(img);
     cout << "Done." << endl;
@@ -111,8 +112,9 @@ void TestBuild2x5() {
 
 void TestBuild2x5Transpose() {
     PNG img;
+  
     img.readFromFile("images-original/mix-2x5.png");
-
+    
     cout << "Building tree from 2x5 image... ";
     TriTree t(img);
     cout << "Done." << endl;

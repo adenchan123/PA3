@@ -101,12 +101,17 @@ Node* TriTree::BuildNode(PNG& im, pair<int, int> ul, int w, int h) {
 
 	//create root node
 	Node* root = new Node(ul, w, h);
+	
+	//printf("new node at (%d, %d), width: %d - height: %d\n", ul.first, ul.second, w, h);
 
 	//final case, one pixel, leaf node
 	if (h == 1 && w == 1) {
-		printf("getting pixel\n");
-		root->avg = *im.getPixel(ul.first, ul.second);
+		//printf("getting pixel at (%d, %d)\n", ul.first, ul.second);
+		RGBAPixel * p = im.getPixel(ul.first, ul.second);
+		root->avg = *p;
 		return root;
+	} else if (h <1 || w < 1) {
+		return NULL;
 	}
 
 	//decide to split along width or height
