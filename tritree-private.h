@@ -9,4 +9,4 @@
  * Declare your functions here as if they are written in-line
  * starting from line 220 of tritree.h
 **/
-
+int NumLeaves(Node* node) const;

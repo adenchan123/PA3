@@ -37,9 +37,20 @@ void TriTree::Prune(double tol) {
 	// YOUR CODE HERE
 }
 
+int TriTree::NumLeaves(Node* node) const {
+	if(node == nullptr) {
+		return 0;
+	}
+	
+	if(node->A == nullptr && node->B == nullptr && node->C == nullptr) {
+		return 1;
+	}
+
+	return NumLeaves(node->A) + NumLeaves(node->B) + NumLeaves(node->C);
+}
+
 int TriTree::NumLeaves() const {
-	// REPLACE THE LINE BELOW WITH YOUR CODE
-	return 0;
+	return NumLeaves(root);
 }
 
 Node* TriTree::BuildNode(PNG& im, pair<int, int> ul, int w, int h) {
