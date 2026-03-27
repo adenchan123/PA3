@@ -10,3 +10,5 @@
  * starting from line 220 of tritree.h
 **/
 int NumLeaves(Node* node) const;
+
+void Clear(Node* node);

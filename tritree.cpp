@@ -16,8 +16,20 @@ TriTree::TriTree(PNG& imIn) {
 	root = nullptr;
 }
 
+void TriTree::Clear(Node* node) {
+	if(node == nullptr) {
+		return;
+	} 
+
+	Clear(node->A);
+	Clear(node->B);
+	Clear(node->C);
+
+	delete node;
+}
+
 void TriTree::Clear() {
-	// YOUR CODE HERE
+	Clear(root);
 }
 
 void TriTree::Copy(const TriTree& other) {
