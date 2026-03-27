@@ -30,8 +30,12 @@ void TriTree::Clear() {
 	Clear(root);
 }
 
-void TriTree::Copy(const TriTree& other) {
+void TriTree::Copy(const TriTree& other, Node* node) {
 	// YOUR CODE HERE
+}
+
+void TriTree::Copy(const TriTree& other) {
+	Copy(other, root);
 }
 
 void TriTree::GetLeafNodes(Node* node, vector<Node*> &nodes) const {
@@ -192,21 +196,21 @@ Node* TriTree::BuildNode(PNG& im, pair<int, int> ul, int w, int h) {
 	int rsum = 0, gsum = 0, bsum = 0, n = 0;
 
 	//calculate average colour after assigning children
-	if (root->A != NULL) {
+	if (root->A != nullptr) {
 		n++;
 		rsum += root->A->avg.r;
 		gsum += root->A->avg.g;
 		bsum += root->A->avg.b;
 	}
 
-	if (root->B != NULL) {
+	if (root->B != nullptr) {
 		n++;
 		rsum += root->B->avg.r;
 		gsum += root->B->avg.g;
 		bsum += root->B->avg.b;
 	}
 
-	if (root->C != NULL) {
+	if (root->C != nullptr) {
 		n++;
 		rsum += root->C->avg.r;
 		gsum += root->C->avg.g;

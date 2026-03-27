@@ -16,3 +16,5 @@ void GetLeafNodes(Node* node, vector<Node*> &nodes) const;
 void Clear(Node* node);
 
 void Prune(double tol, Node* node);
+
+void Copy(const TriTree& other, Node* node);
