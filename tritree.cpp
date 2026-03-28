@@ -194,30 +194,34 @@ Node* TriTree::BuildNode(PNG& im, pair<int, int> ul, int w, int h) {
 	}
 
 	int rsum = 0, gsum = 0, bsum = 0, n = 0;
+	int total_pix = 0;
 
 	//calculate average colour after assigning children
 	if (root->A != nullptr) {
-		n++;
-		rsum += root->A->avg.r;
-		gsum += root->A->avg.g;
-		bsum += root->A->avg.b;
+		int dimension_A = root->A->height * root->A->width;
+		total_pix += dimension_A;
+		rsum += root->A->avg.r * dimension_A;
+		gsum += root->A->avg.g * dimension_A;
+		bsum += root->A->avg.b * dimension_A;
 	}
 
 	if (root->B != nullptr) {
-		n++;
-		rsum += root->B->avg.r;
-		gsum += root->B->avg.g;
-		bsum += root->B->avg.b;
+		int dimension_B = root->B->height * root->B->width;
+		total_pix += dimension_B;
+		rsum += root->B->avg.r * dimension_B;
+		gsum += root->B->avg.g * dimension_B;
+		bsum += root->B->avg.b * dimension_B;
 	}
 
 	if (root->C != nullptr) {
-		n++;
-		rsum += root->C->avg.r;
-		gsum += root->C->avg.g;
-		bsum += root->C->avg.b;
+		int dimension_C = root->C->height * root->C->width;
+		total_pix += dimension_C;
+		rsum += root->C->avg.r * dimension_C;
+		gsum += root->C->avg.g * dimension_C;
+		bsum += root->C->avg.b * dimension_C;
 	}
 
-	root->avg = RGBAPixel(rsum/n, gsum/n, bsum/n);
+	root->avg = RGBAPixel(rsum/total_pix, gsum/total_pix, bsum/total_pix);
 
 	// REPLACE THE LINE BELOW WITH YOUR CODE
 
