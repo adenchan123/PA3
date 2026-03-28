@@ -45,10 +45,6 @@ Node* TriTree::CopyTree(Node* root) {
 
 }
 
-void TriTree::Copy(const TriTree& other) {
-	Copy(other, root);
-}
-
 void TriTree::GetLeafNodes(Node* node, vector<Node*> &nodes) const {
 	if(node == nullptr) {
 		return;
@@ -204,7 +200,7 @@ Node* TriTree::BuildNode(PNG& im, pair<int, int> ul, int w, int h) {
 		}
 	}
 
-	int rsum = 0, gsum = 0, bsum = 0, n = 0;
+	int rsum = 0, gsum = 0, bsum = 0;
 	int total_pix = 0;
 
 	//calculate average colour after assigning children
@@ -231,7 +227,8 @@ Node* TriTree::BuildNode(PNG& im, pair<int, int> ul, int w, int h) {
 		gsum += root->C->avg.g * dimension_C;
 		bsum += root->C->avg.b * dimension_C;
 	}
-
+	
+	//printf("node at (%d, %d), w: %d, h: %d, avg: %d %d %d, n: %d\n", ul.first, ul.second, w, h, rsum/total_pix, gsum/total_pix, bsum/total_pix, total_pix);
 	root->avg = RGBAPixel(rsum/total_pix, gsum/total_pix, bsum/total_pix);
 
 	// REPLACE THE LINE BELOW WITH YOUR CODE
