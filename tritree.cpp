@@ -208,30 +208,6 @@ Node* TriTree::BuildNode(PNG& im, pair<int, int> ul, int w, int h) {
 	int total_pix = 0;
 
 	//calculate average colour after assigning children
-<<<<<<< HEAD
-	if (root->A != NULL) {
-		n++;
-		rsum += (int) root->A->avg.r;
-		gsum += (int)root->A->avg.g;
-		bsum += (int)root->A->avg.b;
-	}
-
-	if (root->B != NULL) {
-		n++;
-		rsum += (int)root->B->avg.r;
-		gsum += (int)root->B->avg.g;
-		bsum += (int)root->B->avg.b;
-	}
-
-	if (root->C != NULL) {
-		n++;
-		rsum += (int)root->C->avg.r;
-		gsum += (int)root->C->avg.g;
-		bsum += (int)root->C->avg.b;
-	}
-	
-	root->avg = RGBAPixel(rsum/n, gsum/n, bsum/n);
-=======
 	if (root->A != nullptr) {
 		int dimension_A = root->A->height * root->A->width;
 		total_pix += dimension_A;
@@ -257,7 +233,6 @@ Node* TriTree::BuildNode(PNG& im, pair<int, int> ul, int w, int h) {
 	}
 
 	root->avg = RGBAPixel(rsum/total_pix, gsum/total_pix, bsum/total_pix);
->>>>>>> refs/remotes/origin/main
 
 	// REPLACE THE LINE BELOW WITH YOUR CODE
 
