@@ -18,3 +18,5 @@ void Clear(Node* node);
 void Prune(double tol, Node* node);
 
 Node* CopyTree(Node* root);
+
+void TransposeTree(Node* root);

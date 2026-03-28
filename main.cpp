@@ -36,13 +36,16 @@ int main() {
     printf("starting 2x5 test\n");
     TestBuild2x5();
     printf("finished 2x5 test\n");
-    // TestBuild2x5Transpose();
+    
 
-    // TestPrune8x5();
+    printf("TRANSPOSE TEST\n");
+    TestBuild2x5Transpose();
+
+    TestPrune8x5();
 
      TestCopyBasic();
 
-    // TestCopyBigPrune();
+    TestCopyBigPrune();
 
     return 0;
 }

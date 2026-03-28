@@ -92,7 +92,42 @@ PNG TriTree::Render() const {
 }
 
 void TriTree::Transpose() {
-	// YOUR CODE HERE
+
+	TransposeTree(root);
+	int temp = this->width;
+	this->width = this->height;
+	this->height = temp;
+	
+
+	
+
+
+
+}
+//swap height and width
+static void swapHWandUL(Node* node) {
+
+	node->upperleft = {node->upperleft.second, node->upperleft.first};
+	int temp = node->height;
+	node->height = node->width;
+		node->width = temp;
+}
+
+void TriTree::TransposeTree(Node* root) {
+	
+	if (root == NULL) {
+		return;
+	}
+	
+	//change every vertical slice to horiz, and horiz to vert
+	//rotate starting point of slice
+	swapHWandUL(root);
+
+	TransposeTree(root->A);
+	TransposeTree(root->B);
+	TransposeTree(root->C);
+
+
 }
 
 void TriTree::Prune(double tol, Node* node) {
