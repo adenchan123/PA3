@@ -31,18 +31,24 @@ void TriTree::Clear() {
 }
 
 void TriTree::Copy(const TriTree& other) {
-	// this->width = other.width;
-	// this->height = other.height;
-	// this->root = CopyTree(other.root);
-
+	this->width = other.width;
+	this->height = other.height;
+	this->root = CopyTree(other.root);
 }
 
 Node* TriTree::CopyTree(Node* root) {
-	// Node* copyRoot = new Node(root->upperleft, root->width, root->height);
+	
+	if (root == NULL) {
+		return NULL;
+	}
+	
+	Node* copyRoot = new Node(root->upperleft, root->width, root->height);
 
-	// copyRoot->A = CopyTree(root->A);
+	copyRoot->A = CopyTree(root->A);
+	copyRoot->B = CopyTree(root->B);
+	copyRoot->C = CopyTree(root->C);
 
-
+	return copyRoot;
 }
 
 void TriTree::GetLeafNodes(Node* node, vector<Node*> &nodes) const {
