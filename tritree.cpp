@@ -43,6 +43,7 @@ Node* TriTree::CopyTree(Node* root) {
 	}
 	
 	Node* copyRoot = new Node(root->upperleft, root->width, root->height);
+	copyRoot->avg = root->avg;
 
 	copyRoot->A = CopyTree(root->A);
 	copyRoot->B = CopyTree(root->B);
@@ -147,6 +148,10 @@ int TriTree::NumLeaves() const {
 
 Node* TriTree::BuildNode(PNG& im, pair<int, int> ul, int w, int h) {
 
+	if (h <1 || w < 1) {
+		return NULL;
+	}
+
 	//create root node
 	Node* root = new Node(ul, w, h);
 	
@@ -158,8 +163,6 @@ Node* TriTree::BuildNode(PNG& im, pair<int, int> ul, int w, int h) {
 		RGBAPixel * p = im.getPixel(ul.first, ul.second);
 		root->avg = *p;
 		return root;
-	} else if (h <1 || w < 1) {
-		return NULL;
 	}
 
 	//decide to split along width or height

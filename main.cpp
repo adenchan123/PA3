@@ -40,7 +40,7 @@ int main() {
 
     // TestPrune8x5();
 
-    // TestCopyBasic();
+     TestCopyBasic();
 
     // TestCopyBigPrune();
 
@@ -188,6 +188,10 @@ void TestCopyBasic() {
         cout << "image from assigned tree is the same. (GOOD)" << endl;
     else
         cout << "image from assigned tree is NOT the same. (BAD)" << endl;
+
+    cout <<"writing t2 to file" <<endl;
+    t2_img.writeToFile("images-output/out_copy_basic.png");
+
 }
 
 void TestCopyBigPrune() {
