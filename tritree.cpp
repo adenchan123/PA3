@@ -31,7 +31,18 @@ void TriTree::Clear() {
 }
 
 void TriTree::Copy(const TriTree& other) {
-	// YOUR CODE HERE
+	// this->width = other.width;
+	// this->height = other.height;
+	// this->root = CopyTree(other.root);
+
+}
+
+Node* TriTree::CopyTree(Node* root) {
+	// Node* copyRoot = new Node(root->upperleft, root->width, root->height);
+
+	// copyRoot->A = CopyTree(root->A);
+
+
 }
 
 void TriTree::GetLeafNodes(Node* node, vector<Node*> &nodes) const {
@@ -194,25 +205,25 @@ Node* TriTree::BuildNode(PNG& im, pair<int, int> ul, int w, int h) {
 	//calculate average colour after assigning children
 	if (root->A != NULL) {
 		n++;
-		rsum += root->A->avg.r;
-		gsum += root->A->avg.g;
-		bsum += root->A->avg.b;
+		rsum += (int) root->A->avg.r;
+		gsum += (int)root->A->avg.g;
+		bsum += (int)root->A->avg.b;
 	}
 
 	if (root->B != NULL) {
 		n++;
-		rsum += root->B->avg.r;
-		gsum += root->B->avg.g;
-		bsum += root->B->avg.b;
+		rsum += (int)root->B->avg.r;
+		gsum += (int)root->B->avg.g;
+		bsum += (int)root->B->avg.b;
 	}
 
 	if (root->C != NULL) {
 		n++;
-		rsum += root->C->avg.r;
-		gsum += root->C->avg.g;
-		bsum += root->C->avg.b;
+		rsum += (int)root->C->avg.r;
+		gsum += (int)root->C->avg.g;
+		bsum += (int)root->C->avg.b;
 	}
-
+	
 	root->avg = RGBAPixel(rsum/n, gsum/n, bsum/n);
 
 	// REPLACE THE LINE BELOW WITH YOUR CODE

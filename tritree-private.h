@@ -16,3 +16,5 @@ void GetLeafNodes(Node* node, vector<Node*> &nodes) const;
 void Clear(Node* node);
 
 void Prune(double tol, Node* node);
+
+Node* CopyTree(Node* root);
